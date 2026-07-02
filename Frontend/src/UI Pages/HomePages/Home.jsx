@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react"; import { Link } from 'react-router-dom'; 
 import NavBar from '../extraComponents/NavBarFolder/NavBar'; 
 import StockItFooter from '../extraComponents/FooterFolder/Footer'; 
+const BACKEND_SERVER_URL = import.meta.env.VITE_BACKEND_SERVER_URL;
 
 function HomePage() {
+    async function sayHii(){
+        const res = await fetch(`${BACKEND_SERVER_URL}`);
+        const data = await res.json();
+        console.log("Data", data);
+    }
+    sayHii();
     return (
         <>
             <header>
