@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-//const URL = 'mongodb://127.0.0.1:27017/Stock-It(21-05-2026)';
+require("dotenv").config();
 const URL = process.env.MONGODBURL;
 const connectMongoose = require("./connectMongoose");
 const { stockRouter } = require("../routes/stockRoutes");
@@ -8,8 +8,6 @@ const { stockRouter } = require("../routes/stockRoutes");
 const { triggerUpdateFunction } = require("../services/updateData");
 const { checkData } = require('../services/checkData');
 const { userRouter } = require('../routes/userRoutes');
-require("dotenv").config();
-
 
 const app = new express();
 
