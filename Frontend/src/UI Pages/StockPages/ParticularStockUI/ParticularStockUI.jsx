@@ -18,6 +18,8 @@ import {
 
 } from "recharts";
 
+const BACKEND_SERVER_URL = import.meta.env.VITE_BACKEND_SERVER_URL;
+
 function ParticularStock() {
 
     const location = useLocation();
@@ -82,7 +84,7 @@ function ParticularStock() {
 
             const response =
                 await fetch(
-                    `http://localhost:8000/user/getHistoricData/${STOCKNAME}?range=${range}`
+                    `${BACKEND_SERVER_URL}user/getHistoricData/${STOCKNAME}?range=${range}`
                 );
 
             const data =
