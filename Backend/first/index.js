@@ -27,6 +27,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Routes
+app.get('/', (req, res)=>{
+    return   res.json({msg : "Server say Hii"});
+});
 app.use('/stock', stockRouter);
 app.use('/user', userRouter);
 //app.use('/service', serviceRouter);
