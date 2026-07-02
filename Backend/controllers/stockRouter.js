@@ -14,10 +14,15 @@ async function handleStockPage(req, res){
 async function getAllStocksOf(req, res){
     const data = req.body;
     const section = data.section;
-    const stocksData = await YearStockModel.find({stock_in:section});
+    try{
+        const stocksData = await YearStockModel.find({stock_in:section}).limit(20);
+        return res.json(stocksData);
+    }catch(err){
+        cosole.log("Error in getAllStocksOf");
+        return res.json{msg : "Error in getAllStocksOf"};
+    }
     //const stocksData = await stockModel.find({stock_in:section});
-    //console.log("Data:", stocksData);
-    return res.json(stocksData);
+    //console.log("Data:", stocksData);    
 }
 
 async function getSearchedStock(req, res){
