@@ -1,0 +1,12 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.block{
+    border: 2px solid black;
+}
+
+.dn{
+    display: none;
+}

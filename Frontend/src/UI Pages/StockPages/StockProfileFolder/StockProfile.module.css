@@ -1,0 +1,225 @@
+.mainContainer {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #eee;
+    margin: 10px;
+
+    /* RESPONSIVE CARD */
+    width: 220px;
+    min-width: 180px;
+    max-width: 100%;
+    flex: 1 1 220px;
+}
+
+.mainContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* Container for the circles */
+.visualWrapper {
+    height: 80px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.outerCircle {
+    height: 70px;
+    width: 70px;
+    border: 8px solid #222;
+    border-radius: 50%;
+}
+
+.innerCircle {
+    height: 80%;
+    width: 80%;
+    border: 1px solid #222;
+    border-radius: 50%;
+}
+
+.nameContainer {
+    position: absolute;
+    bottom: -25px;
+    background: white;
+    padding: 4px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    z-index: 2;
+
+    max-width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nameText {
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Price Info Styles */
+.detailsContainer {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.currPrice {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1a1a1a;
+    word-break: break-word;
+}
+
+.change {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.green {
+    color: #00873c;
+}
+
+.red {
+    color: #eb0f29;
+}
+
+.highLowGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+}
+
+.hlBox span {
+    font-size: 0.6rem;
+    color: #888;
+    display: block;
+    text-transform: uppercase;
+}
+
+.hlBox p {
+    font-size: 0.75rem;
+    font-weight: 600;
+    word-break: break-word;
+}
+
+.df {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dfColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+    .mainContainer {
+        width: 200px;
+        flex: 1 1 200px;
+    }
+
+    .outerCircle {
+        height: 65px;
+        width: 65px;
+    }
+
+    .sectionTitle {
+        font-size: 1rem;
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .mainContainer {
+        width: 100%;
+        margin: 8px 0;
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    .visualWrapper {
+        height: 70px;
+        margin-bottom: 35px;
+    }
+
+    .outerCircle {
+        height: 60px;
+        width: 60px;
+        border-width: 6px;
+    }
+
+    .nameText {
+        font-size: 0.8rem;
+    }
+
+    .currPrice {
+        font-size: 1rem;
+    }
+
+    .change {
+        font-size: 0.8rem;
+    }
+
+    .hlBox span {
+        font-size: 0.55rem;
+    }
+
+    .hlBox p {
+        font-size: 0.7rem;
+    }
+
+    .highLowGrid {
+        gap: 8px;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+    .mainContainer {
+        padding: 12px;
+    }
+
+    .outerCircle {
+        height: 55px;
+        width: 55px;
+    }
+
+    .nameContainer {
+        padding: 3px 8px;
+    }
+
+    .nameText {
+        font-size: 0.75rem;
+    }
+
+    .currPrice {
+        font-size: 0.95rem;
+    }
+
+    .change {
+        font-size: 0.75rem;
+    }
+
+    .highLowGrid {
+        grid-template-columns: 1fr;
+    }
+}

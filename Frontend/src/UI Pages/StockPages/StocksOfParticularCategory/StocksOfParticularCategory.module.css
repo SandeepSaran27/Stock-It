@@ -1,0 +1,561 @@
+.pageContainer{
+    background:#f5f5f5;
+    min-height:100vh;
+    padding-bottom:40px;
+}
+
+.mainLayout{
+    display:flex;
+    gap:25px;
+    padding:25px;
+    align-items:flex-start;
+}
+
+.leftPanel{
+    flex:7;
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+}
+
+.rightPanel{
+    flex:3;
+    min-width:320px;
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+    position:sticky;
+    top:20px;
+}
+
+.headingContainer{
+    padding:25px 25px 10px 25px;
+}
+
+.heading{
+    font-size:32px;
+    margin:0;
+    color:#222;
+}
+
+.subHeading{
+    color:#666;
+    margin-top:6px;
+}
+
+.searchBox{
+    padding:20px 25px;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+}
+
+.searchInput{
+    width:100%;
+    padding:14px 18px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    font-size:16px;
+    outline:none;
+}
+
+.tableHeader{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    padding:18px 25px;
+    font-weight:bold;
+    color:#666;
+    border-bottom:1px solid #eee;
+}
+
+.stockList{
+    display:flex;
+    flex-direction:column;
+}
+
+.stockRow{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    align-items:center;
+    padding:24px 25px;
+    cursor:pointer;
+    transition:0.2s;
+    border-bottom:1px solid #f2f2f2;
+}
+
+.stockRow:hover{
+    background:#f9fafb;
+}
+
+.activeStock{
+    background:#e9f7f1;
+}
+
+.stockName{
+    font-size:18px;
+    font-weight:600;
+    color:#333;
+}
+
+.graphBox{
+    display:flex;
+    justify-content:center;
+}
+
+.graphContainer{
+    width:120px;
+}
+
+.priceInfo{
+    text-align:right;
+}
+
+.marketPrice{
+    font-size:22px;
+    font-weight:bold;
+    color:#222;
+}
+
+.change{
+    margin-top:6px;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:6px;
+    font-weight:600;
+}
+
+.stockTop h2{
+    margin:0;
+    font-size:30px;
+}
+
+.stockTop p{
+    margin-top:10px;
+    color:#666;
+}
+
+.buySellTabs{
+    display:flex;
+    gap:20px;
+    margin:30px 0;
+    border-bottom:1px solid #eee;
+}
+
+.buySellTabs button{
+    background:none;
+    border:none;
+    padding-bottom:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    color:#666;
+}
+
+.activeTab{
+    color:#00b386 !important;
+    border-bottom:3px solid #00b386;
+}
+
+.formGroup{
+    margin-bottom:20px;
+}
+
+.formGroup label{
+    display:block;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.formGroup input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+.buyButton{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:#00b386;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.extraDetails{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.extraDetails div{
+    display:flex;
+    justify-content:space-between;
+    color:#444;
+}
+
+.fullViewBtn{
+    margin-top:30px;
+    display:block;
+    text-align:center;
+    padding:14px;
+    border-radius:14px;
+    text-decoration:none;
+    background:#f3f4f6;
+    color:#222;
+    font-weight:bold;
+}
+
+@media(max-width:1000px){
+
+    .mainLayout{
+        flex-direction:column;
+    }
+
+    .rightPanel{
+        width:100%;
+        position:static;
+    }
+}
+
+@media(max-width:768px){
+
+    .stockRow,
+    .tableHeader{
+        grid-template-columns:1.5fr 1fr 1fr;
+        gap:10px;
+    }
+
+    .stockName{
+        font-size:15px;
+    }
+
+    .marketPrice{
+        font-size:16px;
+    }
+
+    .mainLayout{
+        padding:12px;
+    }
+
+    .heading{
+        font-size:24px;
+    }
+}
+.pageContainer{
+    background:#f4f7fb;
+    min-height:100vh;
+    padding-bottom:50px;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+/* MAIN LAYOUT */
+
+.mainLayout{
+    padding:30px;
+}
+
+/* MAIN CARD */
+
+.leftPanel{
+    width:100%;
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:
+        0 4px 20px rgba(0,0,0,0.05);
+    border:1px solid #edf2f7;
+}
+
+/* HEADER */
+
+.headingContainer{
+    padding:32px 32px 18px 32px;
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8fafc 100%
+        );
+}
+
+.heading{
+    font-size:34px;
+    font-weight:800;
+    margin:0;
+    color:#1e293b;
+    letter-spacing:-1px;
+}
+
+.subHeading{
+    margin-top:8px;
+    color:#64748b;
+    font-size:15px;
+    font-weight:500;
+}
+
+/* SEARCH */
+
+.searchBox{
+    padding:22px 32px;
+    border-top:1px solid #edf2f7;
+    border-bottom:1px solid #edf2f7;
+    background:white;
+}
+
+.searchInput{
+    width:100%;
+    padding:16px 20px;
+    border-radius:16px;
+    border:1px solid #dbe3ec;
+    font-size:16px;
+    outline:none;
+    transition:0.2s;
+    background:#fafcff;
+}
+
+.searchInput:focus{
+    border-color:#3b82f6;
+    box-shadow:
+        0 0 0 4px
+        rgba(59,130,246,0.08);
+}
+
+/* TABLE HEADER */
+
+.tableHeader{
+    display:grid;
+    grid-template-columns:
+        2fr
+        1fr
+        1fr;
+
+    padding:18px 32px;
+
+    background:#f8fafc;
+
+    color:#64748b;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.5px;
+
+    border-bottom:1px solid #edf2f7;
+}
+
+/* STOCK LIST */
+
+.stockList{
+    display:flex;
+    flex-direction:column;
+}
+
+/* STOCK ROW */
+
+.stockRow{
+    display:grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr;
+
+    align-items:center;
+
+    padding:24px 32px;
+
+    text-decoration:none;
+
+    border-bottom:
+        1px solid #f1f5f9;
+
+    transition:
+        background 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    position:relative;
+}
+
+.stockRow:hover{
+
+    background:#f8fbff;
+
+    transform:scale(1.005);
+
+    box-shadow:
+        inset 4px 0px 0px #3b82f6;
+}
+
+/* COMPANY */
+
+.companyInfo{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.stockName{
+    font-size:18px;
+    font-weight:700;
+    color:#1e293b;
+    transition:0.2s;
+}
+
+.stockRow:hover .stockName{
+    color:#2563eb;
+}
+
+/* GRAPH */
+
+.graphBox{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.graphContainer{
+    width:130px;
+    height:45px;
+}
+
+/* PRICE SECTION */
+
+.priceInfo{
+    text-align:right;
+}
+
+.marketPrice{
+    font-size:22px;
+    font-weight:800;
+    color:#0f172a;
+}
+
+.change{
+    margin-top:8px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-size:14px;
+
+    font-weight:700;
+}
+
+/* LOADING */
+
+.loading{
+    padding:50px;
+    text-align:center;
+    font-size:18px;
+    color:#64748b;
+    font-weight:600;
+}
+
+/* SCROLLBAR */
+
+.stockList::-webkit-scrollbar{
+    width:8px;
+}
+
+.stockList::-webkit-scrollbar-thumb{
+    background:#d1d5db;
+    border-radius:20px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .mainLayout{
+        padding:16px;
+    }
+
+    .heading{
+        font-size:28px;
+    }
+
+    .stockRow,
+    .tableHeader{
+
+        grid-template-columns:
+            1.6fr
+            1fr
+            1fr;
+
+        gap:12px;
+    }
+
+    .marketPrice{
+        font-size:18px;
+    }
+}
+
+@media(max-width:650px){
+
+    .leftPanel{
+        border-radius:18px;
+    }
+
+    .headingContainer{
+        padding:24px 20px 14px;
+    }
+
+    .searchBox{
+        padding:18px 20px;
+    }
+
+    .tableHeader{
+        display:none;
+    }
+
+    .stockRow{
+
+        grid-template-columns:1fr;
+
+        gap:18px;
+
+        padding:22px 20px;
+    }
+
+    .graphBox{
+        justify-content:flex-start;
+    }
+
+    .priceInfo{
+        text-align:left;
+    }
+
+    .change{
+        justify-content:flex-start;
+    }
+
+    .stockName{
+        font-size:17px;
+    }
+
+    .marketPrice{
+        font-size:20px;
+    }
+}

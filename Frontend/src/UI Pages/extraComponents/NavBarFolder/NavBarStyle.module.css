@@ -1,0 +1,527 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/* ================= NAVBAR ================= */
+
+.navStyle{
+    height: 58px;
+    width: 100%;
+
+    background-color: rgb(2, 31, 52);
+
+    font-size: large;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 20px;
+
+    box-sizing: border-box;
+}
+
+/* ================= NAV LINKS ================= */
+
+.uiStyle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 40px;
+
+    list-style-type: none;
+}
+
+.liStyle{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 550;
+}
+
+/* ================= LOGIN ================= */
+
+.logIn{
+    height: 38px;
+
+    padding: 0 16px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    border: 0.5px solid gray;
+
+    color: white;
+
+    background-color: rgb(239, 155, 0);
+
+    border-radius: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+}
+
+.loginArrow{
+    margin-right: 2px;
+}
+
+/* ================= PROFILE ================= */
+
+.profileImg{
+    height: 42px;
+    width: 42px;
+
+    border: 2px solid white;
+
+    background: linear-gradient(
+        135deg,
+        rgb(239, 155, 0),
+        rgb(255, 196, 87)
+    );
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* ================= PROFILE DROPDOWN ================= */
+
+.profileBlockContainer{
+    height: auto;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: end;
+
+    padding-right: 20px;
+
+    box-sizing: border-box;
+}
+
+.profileBlock{
+    height: auto;
+    width: 180px;
+
+    margin-top: 10px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+.profileBox{
+    height: 48px;
+    width: 100%;
+
+    border: 0.5px solid #e5e5e5;
+
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.profileBox:hover{
+    background: #f8f8f8;
+}
+
+.profileBlockFooter{
+    background: rgb(239, 155, 0);
+    color: white;
+}
+
+/* ================= SEARCH ================= */
+
+.selectCatgId{
+    height: 38px;
+    width: 110px;
+
+    padding: 0 10px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    background-color: rgb(239, 155, 0);
+
+    color: rgb(82, 81, 81);
+
+    border: none;
+    outline: none;
+
+    border-radius: 6px;
+}
+
+.searchBlock{
+    height: 38px;
+    width: 260px;
+
+    padding: 0 12px;
+
+    background: white;
+
+    border: none;
+    outline: none;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+}
+
+.searchButtonContainer{
+    height: 38.3px;
+    width: 42px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background-color: rgb(239, 155, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.searchButton{
+    width: 100%;
+
+    color: white;
+
+    font-size: 14px;
+}
+
+/* ================= BLOCKS ================= */
+
+.block1,
+.block2,
+.block3,
+.block4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block1{
+    width: 10%;
+}
+
+.block2{
+    width: 45%;
+
+    gap: 10px;
+}
+
+.block3{
+    width: 30%;
+}
+
+.block4{
+    width: 15%;
+
+    justify-content: flex-end;
+}
+
+.block5{
+}
+
+/* ================= HIDE ================= */
+
+.displayNone{
+    display: none;
+}
+
+/* ================= PROFILE IMAGE ================= */
+
+.profileImg{
+    height: 42px;
+    width: 42px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #5b8cff,
+        #7aa2ff
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border: 2px solid rgba(255,255,255,0.9);
+
+    transition: 0.3s;
+}
+
+.profileImg:hover{
+    transform: scale(1.05);
+}
+
+/* ================= PROFILE DROPDOWN ================= */
+
+.profileBlockContainer{
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+
+    position: relative;
+
+    padding-right: 20px;
+
+    box-sizing: border-box;
+}
+
+.profileBlock{
+    width: 320px;
+
+    background: white;
+
+    position: absolute;
+
+    top: 12px;
+    right: 0;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,0.12);
+
+    border: 1px solid #ececec;
+
+    z-index: 1000;
+}
+
+/* ================= TOP USER INFO ================= */
+
+.userName{
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    background: white;
+}
+
+.userName p:first-child{
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #3c4257;
+
+    margin-bottom: 6px;
+}
+
+.userName p:last-child{
+    font-size: 14px;
+
+    color: #7c8398;
+}
+
+/* ================= PROFILE ITEMS ================= */
+
+.profileBox{
+    min-height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+
+    border-bottom: 1px solid #f0f0f0;
+
+    background: white;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.profileBox:hover{
+    background: #f8f9fc;
+}
+
+.profileLeft{
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+}
+
+.profileIcon{
+    font-size: 18px;
+
+    color: #4b5563;
+}
+
+.profileText{
+    display: flex;
+    flex-direction: column;
+}
+
+.profileTitle{
+    font-size: 16px;
+    font-weight: 600;
+
+    color: #434a5e;
+}
+
+.profileSub{
+    font-size: 13px;
+
+    color: #8b93a7;
+
+    margin-top: 2px;
+}
+
+.profileArrow{
+    color: #9ca3af;
+
+    font-size: 16px;
+}
+
+/* ================= LOGOUT ================= */
+
+.profileBlockFooter{
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+
+    background: #fafafa;
+}
+
+.logoutBtn{
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #434a5e;
+
+    cursor: pointer;
+}
+
+.logoutBtn:hover{
+    color: #000;
+}
+
+/* ================= HIDE ================= */
+
+.displayNone{
+    display: none;
+}
+
+.block2{
+    width: 45%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0; /* removed spacing */
+}
+
+/* SELECT */
+
+.selectCatgId{
+    height: 38px;
+    width: 110px;
+
+    padding: 0 10px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    background-color: rgb(239, 155, 0);
+
+    color: rgb(82, 81, 81);
+
+    border: none;
+    outline: none;
+
+    border-radius: 0; /* removed radius */
+}
+
+/* SEARCH INPUT */
+
+.searchBlock{
+    height: 38px;
+    width: 260px;
+
+    padding: 0 12px;
+
+    background: white;
+
+    border: none;
+    outline: none;
+
+    font-size: 14px;
+
+    border-radius: 0; /* removed radius */
+}
+
+/* SEARCH BUTTON */
+
+.searchButtonContainer{
+    height: 38px;
+    width: 42px;
+
+    border: none;
+
+    background-color: rgb(239, 155, 0);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    border-radius: 0; /* removed radius */
+}
