@@ -18,8 +18,8 @@ async function getAllStocksOf(req, res){
         const stocksData = await YearStockModel.find({stock_in:section}).limit(20);
         return res.json(stocksData);
     }catch(err){
-        cosole.log("Error in getAllStocksOf");
-        return res.json{msg : "Error in getAllStocksOf"};
+        console.log("Error in getAllStocksOf");
+        return res.json({msg : "Error in getAllStocksOf"});
     }
     //const stocksData = await stockModel.find({stock_in:section});
     //console.log("Data:", stocksData);    
