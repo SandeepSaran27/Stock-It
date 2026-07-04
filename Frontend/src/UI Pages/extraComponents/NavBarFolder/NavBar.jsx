@@ -5,6 +5,7 @@ import StockImg from '../../StockPages/StockProfileFolder/StockProfile'
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
+const BACKEND_SERVER_URL = import.meta.env.VITE_BACKEND_SERVER_URL;
 
 function NavBar() {
 
