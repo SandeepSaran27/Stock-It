@@ -933,11 +933,11 @@ async function handleUserLogIn(req, res) {
     if (!token) {
         return res.status(400).json({ msg: 'token not generated @controler' });
     }
-    res.cookie("uid", token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-    });
+    res.clearCookie("uid", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+});
     //IN localhost env
     /*res.cookie("uid", token, {
         httpOnly: false,
