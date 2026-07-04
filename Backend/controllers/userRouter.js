@@ -1029,31 +1029,59 @@ async function buyStock(req, res) {
 
     try {
 
+        // const DATA = req.body;
+
+        // const qty =
+        //     Number(DATA.qty);
+
+        // const stockName =
+        //     DATA.stock_name;
+
+        // // =========================
+        // // GET USER ID FROM TOKEN
+        // // =========================
+
+        // const userId =
+        //     getUser(
+        //         DATA.user_name.slice(4)
+        //     )._id;
+
+        // // =========================
+        // // GET FULL USER DOCUMENT
+        // // =========================
+
+        // const user =
+        //     await userModel.findOne({
+        //         _id: userId
+        //     });
+
         const DATA = req.body;
 
-        const qty =
-            Number(DATA.qty);
+const qty = Number(DATA.qty);
 
-        const stockName =
-            DATA.stock_name;
+const stockName = DATA.stock_name;
 
-        // =========================
-        // GET USER ID FROM TOKEN
-        // =========================
+// =========================
+// GET USER FROM COOKIE
+// =========================
 
-        const userId =
-            getUser(
-                DATA.user_name.slice(4)
-            )._id;
+const token = req.cookies.uid;
 
-        // =========================
-        // GET FULL USER DOCUMENT
-        // =========================
+if (!token) {
+    return res.status(401).json({
+        msg: "Not authenticated",
+    });
+}
 
-        const user =
-            await userModel.findOne({
-                _id: userId
-            });
+const userInfo = getUser(token);
+
+const user = await userModel.findById(userInfo._id);
+
+if (!user) {
+    return res.status(404).json({
+        msg: "User not found",
+    });
+}
 
         // =========================
         // GET STOCK
