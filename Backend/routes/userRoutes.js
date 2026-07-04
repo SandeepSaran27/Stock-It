@@ -10,6 +10,7 @@ const {
         soldStock,
         returnUserAllOrders,
         getHistoricData,
+        checkAuth,
     } = require('../controllers/userRouter');
 
 const userRouter = express.Router();
@@ -24,6 +25,7 @@ userRouter.get('/getholdings', returnUserHoldings);
 userRouter.post('/soldstock', soldStock);
 userRouter.get('/getallorders', returnUserAllOrders);
 userRouter.get("/getHistoricData/:stockName", getHistoricData);
+userRouter.get("/checkauth", checkAuth);
 
 module.exports = {
     userRouter,
