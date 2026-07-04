@@ -67,20 +67,37 @@ function NavBar() {
 }, []);
 
     useEffect(() => {
-        async function fecthData() {
-            const cookies = document.cookie;
-            const UID = cookies.split('; ').find(cookie => cookie.startsWith('uid='));
-            if (UID) {
-                const response = await fetch(`http://localhost:8000/user/getuserdata?userIdToken=${UID}`);
-                const DATA = await response.json();
-                setUserData(DATA.userData[0]);
-            } else {
-                console.log("Error");
+
+    async function fetchData() {
+
+        try {
+
+            const response = await fetch(
+                `${BACKEND_SERVER_URL}user/getuserdata`,
+                {
+                    method: "GET",
+                    credentials: "include",
+                }
+            );
+
+            if (!response.ok) {
+                console.log("Not authenticated");
+                return;
             }
 
+            const DATA = await response.json();
+
+            setUserData(DATA.userData);
+
+        } catch (err) {
+
+            console.log(err);
         }
-        fecthData();
-    }, []);
+    }
+
+    fetchData();
+
+}, []);
 
     function handleSearch() {
 
