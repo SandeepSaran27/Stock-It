@@ -16,14 +16,14 @@ function Holdings() {
     // GET TOKEN
     // =========================
 
-    function getUID() {
+    // function getUID() {
 
-        return document.cookie
-            .split("; ")
-            .find(cookie =>
-                cookie.startsWith("uid=")
-            );
-    }
+    //     return document.cookie
+    //         .split("; ")
+    //         .find(cookie =>
+    //             cookie.startsWith("uid=")
+    //         );
+    // }
 
     // =========================
     // FETCH HOLDINGS
@@ -33,14 +33,14 @@ function Holdings() {
 
         async function fetchData() {
 
-            const UID = getUID();
+            // const UID = getUID();
 
-            if (!UID) {
+            // if (!UID) {
 
-                console.log("No Token");
+            //     console.log("No Token");
 
-                return;
-            }
+            //     return;
+            // }
 
             // const response =
             //     await fetch(
