@@ -30,16 +30,39 @@ function ParticularStock() {
     const STOCKNAME =
         stockData?.[0]?.stock_name || "ITC";
 
-    const cookies = document.cookie;
+    const [USERNAME, setUSERNAME] = useState("");
 
-    const UID = cookies
-        .split('; ')
-        .find(cookie =>
-            cookie.startsWith('uid=')
-        );
+    useEffect(() => {
 
-    const USERNAME = UID;
-    console.log("USERNAME", USERNAME);
+    async function fetchUser() {
+
+        try {
+
+            const response = await fetch(
+                `${BACKEND_SERVER_URL}user/getuserdata`,
+                {
+                    method: "GET",
+                    credentials: "include",
+                }
+            );
+
+            if (!response.ok) {
+                return;
+            }
+
+            const DATA = await response.json();
+
+            setUSERNAME(DATA.userData.name);
+
+        } catch (err) {
+
+            console.log(err);
+        }
+    }
+
+    fetchUser();
+
+}, []);
 
     // =========================
     // STATES
@@ -71,7 +94,7 @@ function ParticularStock() {
         "3Y",
         "5Y",
         "ALL"
-    ];
+    ];    
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -84,7 +107,7 @@ function ParticularStock() {
             user_name: form.user_name.value,
         };
 
-        const res = await fetch("http://localhost:8000/user/buystock", {
+        const res = await fetch(`${BACKEND_SERVER_URL}user/buystock`, {
             method: "POST",
             credentials: "include",
             headers: {
