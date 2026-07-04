@@ -57,7 +57,7 @@ function Holdings() {
 
             const DATA =
                 await response.json();
-
+            console.log("DATA.HOLDINGS", DATA.HOLDINGS);
             setUserHoldings(DATA.HOLDINGS);
         }
 
