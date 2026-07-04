@@ -56,7 +56,7 @@ function NavBar() {
             }
 
         } catch (err) {
-            console.log("Error in log in");
+            console.log("Error in login is:", err);
             setlogedIn(false);
         }
     }
