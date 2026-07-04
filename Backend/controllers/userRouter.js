@@ -1232,13 +1232,45 @@ async function buyStock(req, res) {
 }*/
 
 async function returnUserData(req, res) {
-    const DATA = req.query;
-    const userId = getUser(DATA.userIdToken.slice(4));
-    const userData = await userModel.find({ _id: userId });
-    if (userData) {
-        return res.json({ userData });
-    } else {
-        console.log("Error userRouter @1321");
+    try {
+
+        // =========================
+        // GET USER FROM COOKIE
+        // =========================
+
+        const token = req.cookies.uid;
+
+        if (!token) {
+
+            return res.status(401).json({
+                msg: "Not authenticated",
+            });
+
+        }
+
+        const user = getUser(token);
+
+        const userData = await userModel.findById(user._id);
+
+        if (!userData) {
+
+            return res.status(404).json({
+                msg: "User not found",
+            });
+
+        }
+
+        return res.json({
+            userData,
+        });
+
+    } catch (err) {
+
+        console.log(err);
+
+        return res.status(500).json({
+            msg: "Server Error",
+        });
     }
 }
 
