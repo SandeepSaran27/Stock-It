@@ -49,15 +49,15 @@ function NavBar() {
             console.log("res", res);
 
             if (res.ok) {
-                console.log("Loged in");
+                //console.log("Loged in");
                 setlogedIn(true);
             } else {
-                console.log("Not Loged in");
+                //console.log("Not Loged in");
                 setlogedIn(false);
             }
 
         } catch (err) {
-            console.log("Error in login is:", err);
+            //console.log("Error in login is:", err);
             setlogedIn(false);
         }
     }
