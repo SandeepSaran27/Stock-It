@@ -1647,7 +1647,38 @@ async function returnUserAllOrders(req, res) {
     }
 }
 
-//async function getUserData
+async function checkAuth(req, res) {
+
+    const token = req.cookies.uid;
+
+    if (!token) {
+        return res.status(401).json({
+            authenticated: false
+        });
+    }
+
+    try {
+
+        const user = getUser(token);
+
+        if (!user) {
+            return res.status(401).json({
+                authenticated: false
+            });
+        }
+
+        return res.json({
+            authenticated: true,
+            userName: user.name
+        });
+
+    } catch {
+
+        return res.status(401).json({
+            authenticated: false
+        });
+    }
+}
 
 module.exports = {
     handleUserLogIn,
@@ -1659,5 +1690,6 @@ module.exports = {
     returnUserHoldings,
     soldStock,
     returnUserAllOrders,
-    getHistoricData
+    getHistoricData,
+    checkAuth,
 }
