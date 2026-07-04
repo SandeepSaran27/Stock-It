@@ -42,10 +42,18 @@ function Holdings() {
                 return;
             }
 
-            const response =
-                await fetch(
-                    `${BACKEND_SERVER_URL}user/getholdings?userIdToken=${UID}`
-                );
+            // const response =
+            //     await fetch(
+            //         `${BACKEND_SERVER_URL}user/getholdings?userIdToken=${UID}`
+            //     );
+
+            const response = await fetch(
+                `${BACKEND_SERVER_URL}user/getholdings`,
+                {
+                    method: "GET",
+                    credentials: "include",
+                }
+            );
 
             const DATA =
                 await response.json();
@@ -119,29 +127,23 @@ function Holdings() {
 
         const UID = getUID();
 
-        const response =
-            await fetch(
-                `${BACKEND_SERVER_URL}user/soldstock`,
-                {
-                    method: "POST",
+        const response = await fetch(
+            `${BACKEND_SERVER_URL}user/soldstock`,
+            {
+                method: "POST",
 
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
+                credentials: "include",
 
-                    body: JSON.stringify({
+                headers: {
+                    "Content-Type": "application/json",
+                },
 
-                        userIdToken: UID,
-
-                        stock_name:
-                            stock.stock_name,
-
-                        sellQty:
-                            qtyToSell
-                    })
-                }
-            );
+                body: JSON.stringify({
+                    stock_name: stock.stock_name,
+                    sellQty: qtyToSell,
+                }),
+            }
+        );
 
         const data =
             await response.json();
@@ -355,7 +357,7 @@ function Holdings() {
 
                                                     value={
                                                         sellQty[
-                                                            stock.stock_name
+                                                        stock.stock_name
                                                         ] || ""
                                                     }
 

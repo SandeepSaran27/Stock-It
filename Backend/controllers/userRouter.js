@@ -938,6 +938,12 @@ async function handleUserLogIn(req, res) {
         secure: true,
         sameSite: "none",
     });
+    //IN localhost env
+    /*res.cookie("uid", token, {
+        httpOnly: false,
+        secure: false,
+        sameSite: 'lax',
+    });*/
     return res.status(200).json({
         msg: 'login completed',
         userData: userData,
@@ -981,15 +987,46 @@ async function handleUserSignUp(req, res) {
 }
 
 async function addMoneyInUserValet(req, res) {
-    const DATA = req.body;
-    const amount = Number(DATA.amount);
-    const userId = getUser(DATA.user_name.slice(4))._id;
-    const user = await userModel.findOne({ _id: userId });
-    let userBalance = user.valet_balance;
-    let newBalance = user.valet_balance + amount;
-    user.valet_balance = newBalance;
-    await user.save();
-    return res.json({ msg: `${amount} Added` })
+    try {
+        const { amount } = req.body;
+
+        // =========================
+        // GET USER FROM COOKIE
+        // =========================
+
+        const token = req.cookies.uid;
+
+        if (!token) {
+            return res.status(401).json({
+                msg: "Not authenticated",
+            });
+        }
+
+        const userId = getUser(token)._id;
+
+        const user = await userModel.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({
+                msg: "User not found",
+            });
+        }
+
+        user.valet_balance += Number(amount);
+
+        await user.save();
+
+        return res.json({
+            msg: `${amount} Added`,
+        });
+
+    } catch (err) {
+        console.log(err);
+
+        return res.status(500).json({
+            msg: "Server Error",
+        });
+    }
 }
 
 async function buyStock(req, res) {
@@ -1206,14 +1243,35 @@ async function returnUserData(req, res) {
 }
 
 async function returnUserHoldings(req, res) {
-    const DATA = req.query;
-    const userId = getUser(DATA.userIdToken.slice(4));
-    const userData = await userModel.find({ _id: userId });
-    const HOLDINGS = userData[0].holdings;
-    if (HOLDINGS) {
-        return res.json({ HOLDINGS });
-    } else {
-        console.log("Error at holdings @controler");
+    try {
+        const token = req.cookies.uid;
+
+        if (!token) {
+            return res.status(401).json({
+                msg: "Not authenticated",
+            });
+        }
+
+        const userId = getUser(token)._id;
+
+        const user = await userModel.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({
+                msg: "User not found",
+            });
+        }
+
+        return res.json({
+            HOLDINGS: user.holdings,
+        });
+
+    } catch (err) {
+        console.log(err);
+
+        return res.status(500).json({
+            msg: "Server Error",
+        });
     }
 }
 
@@ -1288,18 +1346,28 @@ async function soldStock(req, res) {
         const DATA = req.body;
 
         // =========================
-        // GET USER
+        // GET USER FROM COOKIE
         // =========================
 
-        const user =
-            getUser(
-                DATA.userIdToken.slice(4)
-            );
+        const token = req.cookies.uid;
 
-        const userData =
-            await userModel.findOne({
-                _id: user._id
+        if (!token) {
+            return res.status(401).json({
+                msg: "Not authenticated",
             });
+        }
+
+        const user = getUser(token);
+
+        const userData = await userModel.findOne({
+            _id: user._id,
+        });
+
+        if (!userData) {
+            return res.status(404).json({
+                msg: "User not found",
+            });
+        }
 
         // =========================
         // REQUEST DATA
@@ -1532,22 +1600,23 @@ async function soldStock(req, res) {
 }
 
 async function returnUserAllOrders(req, res) {
-
     try {
 
-        const userIdToken = req.query.userIdToken;
+        // =========================
+        // GET USER FROM COOKIE
+        // =========================
 
-        if (!userIdToken) {
+        const token = req.cookies.uid;
 
-            return res.status(400).json({
-                message: "UID token missing"
+        if (!token) {
+
+            return res.status(401).json({
+                message: "Not authenticated"
             });
 
         }
 
-        const userData = getUser(
-            userIdToken.slice(4)
-        );
+        const userData = getUser(token);
 
         const userId = userData._id;
 
@@ -1555,19 +1624,17 @@ async function returnUserAllOrders(req, res) {
             _id: userId
         });
 
-        if (USER) {
-
-            return res.status(200).json({
-                ALL_ORDERS: USER.all_orders
-            });
-
-        } else {
+        if (!USER) {
 
             return res.status(404).json({
                 message: "User not found"
             });
 
         }
+
+        return res.status(200).json({
+            ALL_ORDERS: USER.all_orders
+        });
 
     } catch (error) {
 
@@ -1579,6 +1646,8 @@ async function returnUserAllOrders(req, res) {
 
     }
 }
+
+//async function getUserData
 
 module.exports = {
     handleUserLogIn,

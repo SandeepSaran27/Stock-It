@@ -8,6 +8,7 @@ const { stockRouter } = require("../routes/stockRoutes");
 const { triggerUpdateFunction } = require("../services/updateData");
 const { checkData } = require('../services/checkData');
 const { userRouter } = require('../routes/userRoutes');
+const cookieParser = require("cookie-parser");
 
 const app = new express();
 
@@ -23,6 +24,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 //Routes
 app.get('/', (req, res)=>{

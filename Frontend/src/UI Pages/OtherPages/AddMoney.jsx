@@ -38,25 +38,21 @@ function AddMoney() {
         try {
 
             const response = await fetch(
-
                 `${BACKEND_SERVER_URL}user/addmoney`,
-
                 {
-                    method: 'POST',
+                    method: "POST",
+
+                    credentials: "include",
 
                     headers: {
-                        'Content-Type': 'application/json'
+                        "Content-Type": "application/json",
                     },
 
                     body: JSON.stringify({
-
                         amount,
-
-                        user_name: UID
                     }),
                 }
             );
-
             if (response.ok) {
 
                 setStatus('success');

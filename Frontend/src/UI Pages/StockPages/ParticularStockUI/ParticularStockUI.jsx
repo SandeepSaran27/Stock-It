@@ -39,6 +39,7 @@ function ParticularStock() {
         );
 
     const USERNAME = UID;
+    console.log("USERNAME", USERNAME);
 
     // =========================
     // STATES
@@ -71,6 +72,30 @@ function ParticularStock() {
         "5Y",
         "ALL"
     ];
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        const form = e.target;
+
+        const body = {
+            qty: form.qty.value,
+            stock_name: form.stock_name.value,
+            user_name: form.user_name.value,
+        };
+
+        const res = await fetch("http://localhost:8000/user/buystock", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+        });
+
+        const data = await res.json();
+        console.log(data);
+    }
 
     // =========================
     // FETCH DATA
@@ -439,7 +464,7 @@ function ParticularStock() {
 
                         </div>
 
-                        <form
+                        {/* <form
                             method="POST"
                             action="http://localhost:8000/user/buystock"
                         >
@@ -522,6 +547,61 @@ function ParticularStock() {
                                 Buy Now
                             </button>
 
+                        </form> */}
+
+                        <form onSubmit={handleSubmit}>
+                            <div
+                                style={{
+                                    marginBottom: "20px"
+                                }}
+                            >
+                                <label>
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    placeholder="Enter quantity"
+                                    name="qty"
+                                    style={{
+                                        width: "100%",
+                                        marginTop: "10px",
+                                        padding: "14px",
+                                        borderRadius: "12px",
+                                        border: "1px solid #ccc",
+                                        fontSize: "16px"
+                                    }}
+                                />
+                            </div>
+
+                            <input
+                                type="hidden"
+                                name="stock_name"
+                                value={STOCKNAME}
+                            />
+
+                            <input
+                                type="hidden"
+                                name="user_name"
+                                value={USERNAME}
+                            />
+
+                            <button
+                                type="submit"
+                                style={{
+                                    width: "100%",
+                                    padding: "15px",
+                                    border: "none",
+                                    borderRadius: "12px",
+                                    backgroundColor: "#ff5722",
+                                    color: "white",
+                                    fontSize: "18px",
+                                    fontWeight: "bold",
+                                    cursor: "pointer"
+                                }}
+                            >
+                                Buy Now
+                            </button>
                         </form>
 
                         {/* EXTRA INFO */}

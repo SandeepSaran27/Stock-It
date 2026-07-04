@@ -39,11 +39,13 @@ function AllOrders() {
 
                 if (UID) {
 
-                    const response =
-                        await fetch(
-
-                            `${BACKEND_SERVER_URL}user/getallorders?userIdToken=${UID}`
-                        );
+                    const response = await fetch(
+                        `${BACKEND_SERVER_URL}user/getallorders`,
+                        {
+                            method: "GET",
+                            credentials: "include",
+                        }
+                    );
 
                     const DATA =
                         await response.json();
@@ -464,9 +466,9 @@ function AllOrders() {
                                 color:
                                     "orange",
 
-                                display:"flex",
-                                alignItems:"center",
-                                justifyContent:"center",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
                             }}
                         >
 
@@ -482,9 +484,9 @@ function AllOrders() {
 
                                 fontSize:
                                     "18px",
-                                    display:"flex",
-                                alignItems:"center",
-                                justifyContent:"center",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
                             }}
                         >
 
