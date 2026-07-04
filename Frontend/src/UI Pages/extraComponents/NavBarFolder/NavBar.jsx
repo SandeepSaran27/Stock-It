@@ -21,17 +21,46 @@ function NavBar() {
         setlogedIn(!!UID);
     }, [logedIn]);*/}
 
+    // useEffect(() => {
+
+    //     const cookies = document.cookie;
+
+    //     const UID = cookies
+    //         .split('; ')
+    //         .find(cookie => cookie.startsWith('uid='));
+
+    //     setlogedIn(!!UID);
+
+    // }, []);
+
     useEffect(() => {
 
-        const cookies = document.cookie;
+    async function checkLogin() {
 
-        const UID = cookies
-            .split('; ')
-            .find(cookie => cookie.startsWith('uid='));
+        try {
 
-        setlogedIn(!!UID);
+            const res = await fetch(
+                `${BACKEND_SERVER_URL}user/checkauth`,
+                {
+                    credentials: "include",
+                }
+            );
 
-    }, []);
+            if (res.ok) {
+                setlogedIn(true);
+            } else {
+                setlogedIn(false);
+            }
+
+        } catch (err) {
+
+            setlogedIn(false);
+        }
+    }
+
+    checkLogin();
+
+}, []);
 
     useEffect(() => {
         async function fecthData() {
