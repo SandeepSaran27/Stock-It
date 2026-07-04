@@ -115,7 +115,7 @@ function NavBar() {
         try {
 
             const response = await fetch(
-                'http://localhost:8000/user/logout',
+                `${BACKEND_SERVER_URL}user/logout`,
                 {
                     method: 'POST',
                     credentials: 'include',
