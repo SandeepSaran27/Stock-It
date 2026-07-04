@@ -24,20 +24,20 @@ function AllOrders() {
 
             try {
 
-                const cookies =
-                    document.cookie;
+                // const cookies =
+                //     document.cookie;
 
-                const UID = cookies
+                // const UID = cookies
 
-                    .split('; ')
+                //     .split('; ')
 
-                    .find(cookie =>
-                        cookie.startsWith(
-                            'uid='
-                        )
-                    );
+                //     .find(cookie =>
+                //         cookie.startsWith(
+                //             'uid='
+                //         )
+                //     );
 
-                if (UID) {
+                // if (UID) {
 
                     const response = await fetch(
                         `${BACKEND_SERVER_URL}user/getallorders`,
@@ -83,12 +83,12 @@ function AllOrders() {
                         soldStocks
                     );
 
-                } else {
+                // } else {
 
-                    console.log(
-                        "UID not found"
-                    );
-                }
+                //     console.log(
+                //         "UID not found"
+                //     );
+                // }
 
             }
             catch (error) {
