@@ -933,11 +933,7 @@ async function handleUserLogIn(req, res) {
     if (!token) {
         return res.status(400).json({ msg: 'token not generated @controler' });
     }
-    res.clearCookie("uid", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-});
+    res.cookie("uid", token, { httpOnly: true, secure: true, sameSite: "none", });
     //IN localhost env
     /*res.cookie("uid", token, {
         httpOnly: false,
@@ -954,10 +950,10 @@ async function handleUserLogOut(req, res) {
     try {
 
         res.clearCookie("uid", {
-            httpOnly: false,
-            secure: false,
-            sameSite: 'lax',
-        });
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+});
 
         return res.status(200).json({
             msg: "Logout Successful"
