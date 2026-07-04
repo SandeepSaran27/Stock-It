@@ -45,6 +45,7 @@ function NavBar() {
                     credentials: "include",
                 }
             );
+            console.log("res", res);
 
             if (res.ok) {
                 console.log("Loged in");
