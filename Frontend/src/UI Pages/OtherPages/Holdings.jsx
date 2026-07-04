@@ -125,7 +125,7 @@ function Holdings() {
         // BACKEND
         // =========================
 
-        const UID = getUID();
+        //const UID = getUID();
 
         const response = await fetch(
             `${BACKEND_SERVER_URL}user/soldstock`,
