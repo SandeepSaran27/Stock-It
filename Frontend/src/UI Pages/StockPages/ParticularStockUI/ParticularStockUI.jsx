@@ -97,28 +97,27 @@ function ParticularStock() {
     ];    
 
     async function handleSubmit(e) {
-        e.preventDefault();
+    e.preventDefault();
 
-        const form = e.target;
+    const form = e.target;
 
-        const body = {
-            qty: form.qty.value,
-            stock_name: form.stock_name.value,
-            user_name: form.user_name.value,
-        };
+    const body = {
+        qty: form.qty.value,
+        stock_name: form.stock_name.value,
+    };
 
-        const res = await fetch(`${BACKEND_SERVER_URL}user/buystock`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(body),
-        });
+    const res = await fetch(`${BACKEND_SERVER_URL}user/buystock`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+    });
 
-        const data = await res.json();
-        console.log(data);
-    }
+    const data = await res.json();
+    console.log(data);
+}
 
     // =========================
     // FETCH DATA
